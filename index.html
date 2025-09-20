@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope - Navigation</title>
+    <style>
+        /* Embedded all CSS styles from styles.css into this single file */
+        /* Reset and Base Styles */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          line-height: 1.6;
+          color: #333;
+          background-color: #fff;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+          background-color: #ffffff;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 1000;
+          padding: 0 20px;
+        }
+
+        .nav-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 70px;
+        }
+
+        /* Logo Styles */
+        .nav-logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+        }
+
+        .logo-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .logo-text {
+          font-size: 24px;
+          font-weight: 600;
+          color: #4a90e2;
+          letter-spacing: -0.5px;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+          display: flex;
+          list-style: none;
+          gap: 40px;
+          align-items: center;
+        }
+
+        .nav-item {
+          position: relative;
+        }
+
+        .nav-link {
+          text-decoration: none;
+          color: #666;
+          font-weight: 500;
+          font-size: 16px;
+          padding: 8px 0;
+          transition: color 0.3s ease;
+          position: relative;
+        }
+
+        .nav-link:hover {
+          color: #4a90e2;
+        }
+
+        .nav-link.active {
+          color: #4a90e2;
+        }
+
+        .nav-link.active::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #4a90e2;
+          border-radius: 1px;
+        }
+
+        /* Hamburger Menu (Mobile) */
+        .hamburger {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+          gap: 4px;
+        }
+
+        .bar {
+          width: 25px;
+          height: 3px;
+          background-color: #333;
+          transition: 0.3s;
+          border-radius: 2px;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+          .nav-menu {
+            position: fixed;
+            left: -100%;
+            top: 70px;
+            flex-direction: column;
+            background-color: #ffffff;
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+            gap: 20px;
+          }
+
+          .nav-menu.active {
+            left: 0;
+          }
+
+          .hamburger {
+            display: flex;
+          }
+
+          .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+          }
+
+          .hamburger.active .bar:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+          }
+
+          .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+          }
+
+          .nav-container {
+            padding: 0 20px;
+          }
+        }
+
+        /* Content Sections */
+        main {
+          margin-top: 70px;
+        }
+
+        /* Hero Section Styles */
+        #hero {
+          position: relative;
+          background-color: #171717;
+          color: white;
+          overflow: hidden;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+        }
+
+        #hero .absolute {
+          position: absolute;
+        }
+
+        #hero .inset-0 {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+
+        #hero .w-full {
+          width: 100%;
+        }
+
+        #hero .h-full {
+          height: 100%;
+        }
+
+        #hero .object-cover {
+          object-fit: cover;
+        }
+
+        #hero .opacity-20 {
+          opacity: 0.2;
+        }
+
+        #hero .relative {
+          position: relative;
+        }
+
+        #hero .max-w-7xl {
+          max-width: 80rem;
+        }
+
+        #hero .mx-auto {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        #hero .px-4 {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        #hero .py-24 {
+          padding-top: 6rem;
+          padding-bottom: 6rem;
+        }
+
+        #hero .grid {
+          display: grid;
+        }
+
+        #hero .gap-8 {
+          gap: 2rem;
+        }
+
+        #hero .items-center {
+          align-items: center;
+        }
+
+        #hero .space-y-6 > * + * {
+          margin-top: 1.5rem;
+        }
+
+        #hero .text-4xl {
+          font-size: 2.25rem;
+          line-height: 2.5rem;
+        }
+
+        #hero .font-bold {
+          font-weight: 700;
+        }
+
+        #hero .leading-tight {
+          line-height: 1.25;
+        }
+
+        #hero .text-lg {
+          font-size: 1.125rem;
+          line-height: 1.75rem;
+        }
+
+        #hero .text-neutral-300 {
+          color: #d4d4d8;
+        }
+
+        #hero .flex {
+          display: flex;
+        }
+
+        #hero .flex-col {
+          flex-direction: column;
+        }
+
+        #hero .gap-4 {
+          gap: 1rem;
+        }
+
+        #hero .inline-flex {
+          display: inline-flex;
+        }
+
+        #hero .justify-center {
+          justify-content: center;
+        }
+
+        #hero .px-6 {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+
+        #hero .py-3 {
+          padding-top: 0.75rem;
+          padding-bottom: 0.75rem;
+        }
+
+        #hero .bg-blue-600 {
+          background-color: #2563eb;
+        }
+
+        #hero .hover\:bg-blue-700:hover {
+          background-color: #1d4ed8;
+        }
+
+        #hero .rounded-lg {
+          border-radius: 0.5rem;
+        }
+
+        #hero .font-semibold {
+          font-weight: 600;
+        }
+
+        #hero .transition-colors {
+          transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 150ms;
+        }
+
+        #hero .shadow-2xl {
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Responsive styles for hero */
+        @media (min-width: 640px) {
+          #hero .sm\:px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+
+          #hero .sm\:flex-row {
+            flex-direction: row;
+          }
+        }
+
+        @media (min-width: 768px) {
+          #hero .md\:text-5xl {
+            font-size: 3rem;
+            line-height: 1;
+          }
+
+          #hero .md\:text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+          }
+
+          #hero .md\:py-32 {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          #hero .lg\:px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+          }
+
+          #hero .lg\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          #hero .lg\:text-6xl {
+            font-size: 3.75rem;
+            line-height: 1;
+          }
+        }
+
+        .section {
+          min-height: 100vh;
+          padding: 100px 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+
+        .section h1 {
+          font-size: 3rem;
+          margin-bottom: 20px;
+          color: #333;
+        }
+
+        .section p {
+          font-size: 1.2rem;
+          color: #666;
+          max-width: 600px;
+        }
+
+        /* Smooth Scrolling */
+        html {
+          scroll-behavior: smooth;
+        }
+
+        /* Responsive Typography */
+        @media screen and (max-width: 768px) {
+          .section h1 {
+            font-size: 2rem;
+          }
+
+          .section p {
+            font-size: 1rem;
+          }
+
+          .logo-text {
+            font-size: 20px;
+          }
+        }
+
+        /* About Us Section Styles */
+        #about {
+          background-color: #f8f9fa;
+          padding: 80px 20px;
+          min-height: auto;
+        }
+
+        .about-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+
+        .about-content {
+          text-align: left;
+        }
+
+        .about-content h2 {
+          font-size: 3rem;
+          font-weight: 700;
+          color: #333;
+          margin-bottom: 30px;
+          line-height: 1.2;
+        }
+
+        .about-content p {
+          font-size: 1.1rem;
+          color: #666;
+          line-height: 1.7;
+          margin-bottom: 25px;
+        }
+
+        .about-badge {
+          display: inline-block;
+          margin-top: 30px;
+        }
+
+        .about-badge img {
+          height: 60px;
+          width: auto;
+        }
+
+        .about-image {
+          position: relative;
+        }
+
+        .about-image img {
+          width: 100%;
+          height: 400px;
+          object-fit: cover;
+          border-radius: 12px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile responsiveness for About Us */
+        @media screen and (max-width: 768px) {
+          .about-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+          }
+
+          .about-content {
+            text-align: center;
+          }
+
+          .about-content h2 {
+            font-size: 2.5rem;
+          }
+
+          .about-image img {
+            height: 300px;
+          }
+        }
+
+        /* Services Section Styles */
+        #services {
+          background-color: #ffffff;
+          padding: 80px 20px;
+          min-height: auto;
+        }
+
+        .services-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .services-header {
+          margin-bottom: 60px;
+        }
+
+        .services-header h2 {
+          font-size: 3rem;
+          font-weight: 700;
+          color: #333;
+          margin-bottom: 20px;
+        }
+
+        .services-header p {
+          font-size: 1.2rem;
+          color: #666;
+          max-width: 800px;
+          margin: 0 auto;
+          line-height: 1.6;
+        }
+
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 40px;
+          margin-top: 60px;
+        }
+
+        .service-card {
+          background: #f8f9fa;
+          border-radius: 12px;
+          padding: 40px 30px;
+          text-align: left;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border: 1px solid #e9ecef;
+        }
+
+        .service-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 15px;
+          line-height: 1.3;
+        }
+
+        .service-card p {
+          color: #666;
+          line-height: 1.6;
+          font-size: 1rem;
+        }
+
+        .service-card ul {
+          margin-top: 20px;
+          padding-left: 0;
+          list-style: none;
+        }
+
+        .service-card li {
+          color: #666;
+          margin-bottom: 8px;
+          padding-left: 20px;
+          position: relative;
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+
+        .service-card li::before {
+          content: "•";
+          color: #4a90e2;
+          font-weight: bold;
+          position: absolute;
+          left: 0;
+        }
+
+        /* Mobile responsiveness for Services */
+        @media screen and (max-width: 768px) {
+          .services-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .services-header h2 {
+            font-size: 2.5rem;
+          }
+
+          .service-card {
+            padding: 30px 25px;
+          }
+        }
+
+        /* Contact Section Styles */
+        #contact {
+          background-color: #f8f9fa;
+          padding: 80px 20px;
+          min-height: auto;
+        }
+
+        .contact-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: start;
+        }
+
+        .contact-form-section {
+          text-align: left;
+        }
+
+        .contact-form-section h2 {
+          font-size: 3rem;
+          font-weight: 700;
+          color: #333;
+          margin-bottom: 20px;
+          line-height: 1.2;
+        }
+
+        .contact-form-section p {
+          font-size: 1.1rem;
+          color: #666;
+          line-height: 1.7;
+          margin-bottom: 40px;
+        }
+
+        .contact-form {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .form-group input,
+        .form-group textarea {
+          padding: 15px;
+          border: 2px solid #e9ecef;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-family: inherit;
+          transition: border-color 0.3s ease;
+          background-color: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+          outline: none;
+          border-color: #4a90e2;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+          color: #999;
+        }
+
+        .form-group textarea {
+          resize: vertical;
+          min-height: 120px;
+        }
+
+        .submit-btn {
+          background-color: #4a90e2;
+          color: white;
+          padding: 15px 30px;
+          border: none;
+          border-radius: 8px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+          background-color: #357abd;
+        }
+
+        .contact-info-section {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .contact-image {
+          position: relative;
+        }
+
+        .contact-image img {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 12px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 20px;
+        }
+
+        .contact-info p {
+          color: #666;
+          margin-bottom: 15px;
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        .contact-badge {
+          display: inline-block;
+          margin-top: 20px;
+        }
+
+        /* Mobile responsiveness for Contact */
+        @media screen and (max-width: 768px) {
+          .contact-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+
+          .contact-form-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+          }
+
+          .contact-form-section p {
+            text-align: center;
+          }
+
+          .form-row {
+            grid-template-columns: 1fr;
+          }
+
+          .contact-image img {
+            height: 250px;
+          }
+        }
+        .logo-img{
+          width: 13%;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo Section -->
+            <img class="logo-img" src="/logo2.jpg" alt="logo">
+            <!-- <div class="nav-logo">
+                <div >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" fill="#4A90E2"/>
+                        <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg> -->
+                    
+                <!-- </div> -->
+                <!-- <span class="logo-text">Hope</span> -->
+            <!-- </div> -->
+
+            <!-- Desktop Navigation Menu -->
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <!--  -->
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Mobile Hamburger Menu -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sample Content Sections -->
+    <main>
+        <!-- Hero Section with Care Service Content -->
+        <section id="hero" class="relative bg-neutral-900 text-white overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://www.hopecareserviceagency.co.uk/wp-content/uploads/2022/04/consultation-care.webp" alt="Consultation care" class="w-full h-full object-cover opacity-20">
+            </div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">Bespoke, Tailored Care That Provides A Better Life At Home</h1>
+                        <p class="text-lg md:text-xl text-neutral-300">At Hope Care Service Agency, we curate unique strategies and a delivery plan that support both the care recipient and their family. We are here to fully support the individual, regardless of health care needs.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button id="callback-btn" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition-colors">Request a Call Back</button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img src="https://www.hopecareserviceagency.co.uk/wp-content/uploads/2022/04/care-setup.webp" alt="Care setup" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="home" class="section">
+            <h1>Welcome to Hope</h1>
+            <p>Your trusted partner for all your needs.</p>
+        </section>
+
+        <!-- Updated About Us section with new content and design -->
+        <section id="about">
+          <div class="about-container">
+            <div class="about-content">
+              <h2>About Us</h2>
+              <p>Hope Care Services specializes in a comprehensive range of solutions primarily for the government sector. We provide manpower outsourcing and staffing solutions for government projects and departments.</p>
+              <p>Our expertise also extends to audit and compliance services, government tender assistance, and essential facility and business support. Additionally, we are a key player in the solar energy and renewable solutions space, offering services from installation to maintenance.</p>
+              <p>We are a single-source partner for a wide variety of government needs, committed to delivering excellence and reliability in every project we undertake.</p>
+              <div class="about-badge">
+                <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="120" height="60" rx="8" fill="#7C3AED"/>
+                  <text x="60" y="25" text-anchor="middle" fill="white" font-size="10" font-weight="600">Certified by</text>
+                  <text x="60" y="40" text-anchor="middle" fill="white" font-size="12" font-weight="700">Government Standards</text>
+                  <text x="60" y="52" text-anchor="middle" fill="white" font-size="8">Quality Commission</text>
+                </svg>
+              </div>
+            </div>
+            <div class="about-image">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-as5klogx1BtbqmMBWW7InVwG2EMKFv.png" alt="Professional handshake representing trust and partnership">
+            </div>
+          </div>
+        </section>
+
+        <!-- Comprehensive Government Services Section -->
+        <section id="services">
+          <div class="services-container">
+            <div class="services-header">
+              <h2>Our Services</h2>
+              <p>Comprehensive solutions tailored for government sector needs, delivering excellence across multiple domains with professional expertise and reliable support.</p>
+            </div>
+            
+            <div class="services-grid">
+              <div class="service-card">
+                <img src="/placeholder.svg?height=200&width=400" alt="Manpower Outsourcing">
+                <h3>Manpower Outsourcing (Government Sector Only)</h3>
+                <ul>
+                  <li>Comprehensive staffing for skilled, semi-skilled, and unskilled manpower</li>
+                  <li>IT and technical manpower for government tenders</li>
+                  <li>Specialized facility management staff (housekeeping, security, drivers)</li>
+                  <li>Event & program support for government functions</li>
+                  <li>HR & recruitment solutions with payroll management</li>
+                  <li>Training & development programs for government staff</li>
+                </ul>
+              </div>
+
+              <div class="service-card">
+                <img src="/placeholder.svg?height=200&width=400" alt="Government Tender Services">
+                <h3>Government Tender & Audit Services</h3>
+                <ul>
+                  <li>End-to-end government tender process assistance</li>
+                  <li>Bidding support and comprehensive documentation</li>
+                  <li>Vendor registration on GeM, PSU, and MSME platforms</li>
+                  <li>Financial and social audits for compliance</li>
+                  <li>Transparency and regulatory compliance assurance</li>
+                </ul>
+              </div>
+
+              <div class="service-card">
+                <img src="/placeholder.svg?height=200&width=400" alt="Solar Energy Solutions">
+                <h3>Solar Energy & Business Support</h3>
+                <ul>
+                  <li>Solar project management and government tender participation</li>
+                  <li>Rooftop solar systems installation and maintenance</li>
+                  <li>Solar street lighting and rural electrification solutions</li>
+                  <li>Administrative and clerical support services</li>
+                  <li>IT helpdesk and system administration</li>
+                  <li>Professional office administration and data entry</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="testimonials" class="section">
+            <h1>Testimonials</h1>
+            <p>See what our clients say about us.</p>
+        </section>
+
+        <section id="contact">
+          <div class="contact-container">
+            <div class="contact-form-section">
+              <h2>Contact</h2>
+              <p>Request a consultation and assessment today to discover how we can support your government sector needs and projects.</p>
+              
+              <!-- Added Google Form integration with proper action URL -->
+              <form class="contact-form" action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
+                <div class="form-row">
+                  <div class="form-group">
+                    <input type="text" name="entry.FIRST_NAME_ID" placeholder="First Name" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="entry.LAST_NAME_ID" placeholder="Last Name" required>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <input type="email" name="entry.EMAIL_ID" placeholder="Email Address" required>
+                </div>
+                
+                <div class="form-group">
+                  <input type="tel" name="entry.PHONE_ID" placeholder="Phone Number" required>
+                </div>
+                
+                <div class="form-group">
+                  <textarea name="entry.MESSAGE_ID" placeholder="Tell us about your government sector requirements and how we can assist you" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Request a Call Back</button>
+              </form>
+            </div>
+            
+            <div class="contact-info-section">
+              <div class="contact-image">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-as5klogx1BtbqmMBWW7InVwG2EMKFv.png" alt="Professional handshake representing trust and partnership">
+              </div>
+              
+              <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><strong>Phone no:</strong> 0522-7118245</p>
+                <p><strong>Email:</strong> serviceshopecare@gmail.com</p>
+                <p><strong>Available 24/7</strong> for urgent government project needs</p>
+                <p><strong>Specializing in:</strong> Government tenders, manpower outsourcing, and solar energy solutions</p>
+                
+                <div class="contact-badge">
+                  <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="120" height="60" rx="8" fill="#7C3AED"/>
+                    <text x="60" y="25" text-anchor="middle" fill="white" font-size="10" font-weight="600">Certified by</text>
+                    <text x="60" y="40" text-anchor="middle" fill="white" font-size="12" font-weight="700">Government Standards</text>
+                    <text x="60" y="52" text-anchor="middle" fill="white" font-size="8">Quality Commission</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener("DOMContentLoaded", () => {
+          const hamburger = document.querySelector(".hamburger")
+          const navMenu = document.querySelector(".nav-menu")
+          const navLinks = document.querySelectorAll(".nav-link")
+
+          // Mobile menu toggle
+          hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active")
+            navMenu.classList.toggle("active")
+          })
+
+          // Close mobile menu when clicking on a link
+          navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+              hamburger.classList.remove("active")
+              navMenu.classList.remove("active")
+            })
+          })
+
+          // Active link highlighting based on scroll position
+          function updateActiveLink() {
+            const sections = document.querySelectorAll(".section")
+            const scrollPos = window.scrollY + 100
+
+            sections.forEach((section) => {
+              const sectionTop = section.offsetTop
+              const sectionHeight = section.offsetHeight
+              const sectionId = section.getAttribute("id")
+              const correspondingLink = document.querySelector(`a[href="#${sectionId}"]`)
+
+              if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                // Remove active class from all links
+                navLinks.forEach((link) => link.classList.remove("active"))
+                // Add active class to current link
+                if (correspondingLink) {
+                  correspondingLink.classList.add("active")
+                }
+              }
+            })
+          }
+
+          // Update active link on scroll
+          window.addEventListener("scroll", updateActiveLink)
+
+          // Smooth scrolling for navigation links
+          navLinks.forEach((link) => {
+            link.addEventListener("click", function (e) {
+              e.preventDefault()
+              const targetId = this.getAttribute("href").substring(1)
+              const targetSection = document.getElementById(targetId)
+
+              if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 70 // Account for fixed navbar
+                window.scrollTo({
+                  top: offsetTop,
+                  behavior: "smooth",
+                })
+              }
+            })
+          })
+
+          // Logo click - scroll to top
+          const logo = document.querySelector(".logo-img")
+          logo.addEventListener("click", () => {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          })
+
+          // Request a Call Back button functionality
+          const callbackBtn = document.getElementById("callback-btn")
+          if (callbackBtn) {
+            callbackBtn.addEventListener("click", () => {
+              // You can customize this action - for now it shows an alert
+              // In a real application, this would open a form or redirect to a contact page
+              alert("Thank you for your interest! We will contact you soon to discuss your care needs.")
+
+              // Alternative: scroll to contact section
+              // const contactSection = document.getElementById("contact")
+              // if (contactSection) {
+              //   const offsetTop = contactSection.offsetTop - 70
+              //   window.scrollTo({
+              //     top: offsetTop,
+              //     behavior: "smooth",
+              //   })
+              // }
+            })
+          }
+
+          // Contact form submission
+          const contactForm = document.querySelector('.contact-form');
+          if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+              // Form will submit to Google Forms
+              // Show confirmation message
+              setTimeout(() => {
+                alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your government sector requirements.');
+              }, 1000);
+            });
+          }
+        })
+    </script>
+</body>
+</html>
