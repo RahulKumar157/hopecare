@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Care Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: #87CEEB;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            animation: slideDown 0.5s ease-in-out;
+        }
+
+        .announcement-bar span {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .announcement-bar i {
+            margin-right: 5px;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #ffffff;
+            padding: 20px 0;
+            position: relative;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo svg {
+            width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            color: #87CEEB;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: #87CEEB;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .menu li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #87CEEB;
+            transition: width 0.3s ease;
+        }
+
+        .menu li a:hover {
+            color: #4682B4;
+        }
+
+        .menu li a:hover::after {
+            width: 100%;
+        }
+
+        .search-icon {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #87CEEB;
+            transition: transform 0.3s ease;
+        }
+
+        .search-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-btn {
+            background-color: #87CEEB;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+            margin-left: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn:hover {
+            background-color: #4682B4;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(135, 206, 235, 0.4);
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1501785574742-b37787a9938c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            animation: slideUp 1s ease-out 0.5s both;
+        }
+
+        .hero .contact-btn {
+            background-color: #87CEEB;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .contact-btn:hover {
+            background-color: #4682B4;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(135, 206, 235, 0.4);
+        }
+
+        .hero .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .hero .contact-btn:hover::before {
+            left: 100%;
+        }
+
+        .slide-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: white;
+            transform: scale(1.3);
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #87CEEB;
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #4682B4;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-img {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .service-content h3 {
+            color: #87CEEB;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Vector Images Section */
+        .vector-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .vector-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .vector-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .vector-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            fill: #87CEEB;
+        }
+
+        .vector-item h3 {
+            color: #87CEEB;
+            margin-bottom: 15px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #87CEEB;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #4682B4;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 0 15px;
+            color: #666;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 15px 0;
+        }
+
+        .faq-item.active .faq-question {
+            color: #4682B4;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #87CEEB;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #4682B4;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #f8f9fa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: #4682B4;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #4682B4;
+            transform: translateY(-3px);
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #4682B4;
+        }
+
+        /* Contact Form (outside footer) */
+        .contact-form-section {
+            padding: 60px 0;
+            background-color: white;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .request-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid #87CEEB;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #87CEEB;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #87CEEB;
+        }
+
+        .file-upload {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            background-color: #f8f9fa;
+            border: 2px dashed #87CEEB;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-label:hover {
+            background-color: #e3f2fd;
+        }
+
+        .file-label i {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background-color: #87CEEB;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+        }
+
+        .submit-btn:hover {
+            background-color: #4682B4;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(135, 206, 235, 0.4);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #f8f9fa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .menu {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .menu li {
+                margin: 5px 10px;
+            }
+            
+            .contact-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .slide-indicators {
+                bottom: 20px;
+            }
+            
+            .services-grid,
+            .vector-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-container {
+                padding: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Custom Logo SVG */
+        .custom-logo {
+            width: 200px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <span><i class="fas fa-phone"></i> +91 98765 43210</span>
+        <span><i class="fas fa-envelope"></i> info@hopecareservices.com</span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo" onclick="window.location.href='#'">
+                <svg class="custom-logo" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M200,30 C230,10 250,10 280,30 C300,50 310,80 310,100 C310,120 300,140 280,150 C260,160 240,150 220,140 C200,130 180,140 160,150 C140,160 120,150 100,140 C80,130 70,120 70,100 C70,80 80,50 100,30 C120,10 140,10 170,30 C190,50 200,50 200,30 Z" fill="#87CEEB"/>
+                    <path d="M200,100 C220,90 230,80 230,70 C230,60 220,50 200,40 C180,50 170,60 170,70 C170,80 180,90 200,100 Z" fill="#fff"/>
+                    <path d="M200,100 C180,110 170,120 170,130 C170,140 180,150 200,160 C220,150 230,140 230,130 C230,120 220,110 200,110 C190,110 180,120 180,130 Z" fill="#fff"/>
+                    <path d="M180,130 C180,140 190,150 200,150 C210,150 220,140 220,130 C220,120 210,110 200,110 C190,110 180,120 180,130 Z" fill="#87CEEB"/>
+                    <text x="50" y="170" font-size="40" font-weight="bold" fill="#87CEEB">HOPE CARE</text>
+                    <text x="200" y="170" font-size="40" font-weight="bold" fill="black">SERVICES</text>
+                </svg>
+            </div>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#work">Our Work</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <button class="contact-btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'});">Contact Us</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Empowering Government Initiatives</h1>
+            <p>Comprehensive solutions for government tenders, manpower supply, social audits, financial audits, outsourcing, solar energy services, and facility management.</p>
+            <button class="contact-btn" onclick="document.getElementById('contactForm').scrollIntoView({behavior: 'smooth'});">Get Started</button>
+        </div>
+        <div class="slide-indicators">
+            <div class="indicator active" onclick="changeSlide(0)"></div>
+            <div class="indicator" onclick="changeSlide(1)"></div>
+            <div class="indicator" onclick="changeSlide(2)"></div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1573164714017-9831985d8286?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Manpower Supply">
+                    </div>
+                    <div class="service-content">
+                        <h3>Manpower Supply</h3>
+                        <p>We provide skilled and unskilled manpower for various government projects and initiatives across different sectors.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1525450779290-932282208780?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Social Audits">
+                    </div>
+                    <div class="service-content">
+                        <h3>Social Audits</h3>
+                        <p>Comprehensive social audit services to ensure transparency, accountability, and effectiveness in government programs.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1529770672676-f591366657d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Financial Audits">
+                    </div>
+                    <div class="service-content">
+                        <h3>Financial Audits</h3>
+                        <p>Professional financial auditing services to ensure compliance, accuracy, and integrity in government financial reporting.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1559136555-931551224307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Outsourcing">
+                    </div>
+                    <div class="service-content">
+                        <h3>Outsourcing</h3>
+                        <p>End-to-end outsourcing solutions for government departments to improve efficiency and reduce operational costs.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1565958011145-9c028335573c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Solar Energy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Solar Energy Services</h3>
+                        <p>Expert consultancy and implementation services for solar energy projects in government buildings and facilities.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1545035206-758871521050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Facility Management">
+                    </div>
+                    <div class="service-content">
+                        <h3>Facility & Business Support</h3>
+                        <p>Comprehensive facility management and business support services for government offices and institutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vector Images Section -->
+    <section class="vector-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Expertise</h2>
+            </div>
+            <div class="vector-container">
+                <div class="vector-item">
+                    <svg class="vector-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="40" stroke="white" stroke-width="2" fill="none"/>
+                        <path d="M30,30 L70,70 M70,30 L30,70" stroke="white" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="8" fill="white"/>
+                    </svg>
+                    <h3>Government Tenders</h3>
+                    <p>Specialized expertise in managing and executing government tender processes efficiently.</p>
+                </div>
+                <div class="vector-item">
+                    <svg class="vector-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="20" width="60" height="60" rx="10" ry="10" fill="none" stroke="white" stroke-width="2"/>
+                        <line x1="30" y1="30" x2="70" y2="70" stroke="white" stroke-width="2"/>
+                        <line x1="70" y1="30" x2="30" y2="70" stroke="white" stroke-width="2"/>
+                    </svg>
+                    <h3>Project Management</h3>
+                    <p>Professional project management services ensuring timely completion and quality delivery.</p>
+                </div>
+                <div class="vector-item">
+                    <svg class="vector-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="white" stroke-width="2"/>
+                        <path d="M40,40 L60,40 L60,60 L40,60 Z" fill="none" stroke="white" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="8" fill="white"/>
+                    </svg>
+                    <h3>Compliance & Auditing</h3>
+                    <p>Ensuring adherence to regulations and standards through comprehensive compliance and auditing services.</p>
+                </div>
+                <div class="vector-item">
+                    <svg class="vector-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50,20 C70,40 70,60 50,80 C30,60 30,40 50,20 Z" fill="none" stroke="white" stroke-width="2"/>
+                        <path d="M50,20 C30,40 30,60 50,80 C70,60 70,40 50,20 Z" fill="none" stroke="white" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="8" fill="white"/>
+                    </svg>
+                    <h3>Renewable Energy</h3>
+                    <p>Leading solutions in solar energy and other renewable sources for sustainable development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What types of government tenders do you handle?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We handle a wide range of government tenders including manpower supply, social audits, financial audits, outsourcing, solar energy projects, and facility management services.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do you ensure the quality of manpower supplied?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We have a rigorous selection process that includes skill assessment, background verification, and training programs to ensure our manpower meets the highest standards.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What is your approach to social audits?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Our social audit approach involves comprehensive data collection, stakeholder engagement, impact assessment, and recommendations for improvement to ensure transparency and accountability.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can you assist with solar energy installations?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we provide end-to-end solar energy solutions including feasibility studies, system design, installation, commissioning, and maintenance services for government projects.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What is your experience with government projects?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We have extensive experience working with various government departments and agencies, successfully completing numerous projects across different sectors with high client satisfaction.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section (Outside Footer) -->
+    <section class="contact-form-section" id="contactForm">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-form-container">
+                <div class="request-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel" id="mobile" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="file-upload">
+                            <label for="document" class="file-label">
+                                <i class="fas fa-cloud-upload-alt"></i> Upload Document
+                            </label>
+                            <input type="file" id="document" class="file-input">
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Hope Care Services</h3>
+                    <p>Providing comprehensive solutions for government tenders, manpower supply, social audits, financial audits, outsourcing, solar energy services, and facility management.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#work">Our Work</a></li>
+                        <li><a href="#faq">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Government Street, New Delhi, India</p>
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> info@hopecareservices.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Hope Care Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Slide Functionality
+        let currentSlide = 0;
+        const slides = [
+            'https://images.unsplash.com/photo-1501785574742-b37787a9938c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+            'https://images.unsplash.com/photo-1587403171745-139735188937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+            'https://images.unsplash.com/photo-1589099903709-803d67465845?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+        ];
+
+        function changeSlide(index) {
+            document.querySelector('.hero').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${slides[index]}')`;
+            document.querySelectorAll('.indicator').forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        // FAQ Toggle Functionality
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+            const icon = element.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            }
+        }
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your request! We will contact you soon.');
+            this.reset();
+        });
+
+        // Search functionality
+        document.querySelector('.search-icon').addEventListener('click', function() {
+            alert('Search functionality would be implemented here.');
+        });
+
+        // Auto-advance slides
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            changeSlide(currentSlide);
+        }, 5000);
+
+        // Initial setup
+        window.onload = function() {
+            changeSlide(0);
+        };
+    </script>
+</body>
+</html>
